@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+	<title>Skinner</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		body{font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 12px; background: #ededed; margin:25px;}
+		.cl{float:none; clear:both;}
+		.fl{float:left;}
+		.fr{float:right;}
+		.example{ margin:25px auto; padding:15px; border:1px solid #fff; -moz-border-radius: 15px; border-radius: 15px; background:#f4f4f4; box-shadow:0 0 8px #666; -webkit-box-shadow:0 0 8px #666; -moz-box-shadow:0 0 8px #666;}
+		.code{ margin:25px auto; padding:15px; border:1px solid #333; -moz-border-radius: 15px; border-radius: 15px; background:#141414; box-shadow:0 0 8px #666; -webkit-box-shadow:0 0 8px #666; -moz-box-shadow:0 0 8px #666; color:#f8f8f8; font-size:11px;}
+		.code strong{ font-weight:normal; color:#f9ee98}
+		.code span{color:#8f9d6a;}
+		.code span.tag{color:#cda869}
+		.code span.bool{color:#b4431f}
+		p span{color :#666; font-size:10px;}
+		.release{ font-style: italic}
+		.release span{ color: #333;}
+	</style>
+	<script src="js/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="js/jquery-skinner.js" type="text/javascript"></script>
+    <link href="css/jquery-skinner.css" rel="stylesheet" />
+    <script type="text/javascript">
+		$(function(){			
+			$('.select1').skinner({'width':'200px','maxitem':'4'});			
+			$('.select2').skinner({'type':'left','width':'150px','maxitem':false});			
+			$('.select3').skinner({'type':'right','width':'100px'});			
+			$('.select4').skinner({'type':'left','width':'50px','textwrap':true});				
+			$('.select5').skinner({'type':'right'});			
+		});
+	</script>
+</head>
+	<body>
+			<h1><a href="http://plugins.jquery.com/project/skinner" title="jQuery Skinner 1.1">Skinner</a></h1>
+			<h2>A Plugin for jQuery to customize your combo box. (&lt;select&gt;)</h2>
+			<h3>jquery-skinner.js</h3>
+			<p>If you find any bug, report it by direct message on twitter. <a href="http://twitter.com/#!/anbi">@anbi</a></p>
+			<br />
+			<div class="example">
+				<select class="select1">					
+					<option>Banana</option>
+					<option>Cucumber</option>
+					<option>Strawberry</option>
+					<option>Hedge apple</option>
+					<option>Boysenberry</option>
+					<option>Apple</option>
+					<option>Pomegranate tree</option>
+				</select>
+				<div class="cl"></div>
+				<br />
+				<br />
+				<br />
+				<select class="select2">					
+					<option>Banana</option>
+					<option>Cucumber</option>
+					<option>Strawberry</option>
+					<option>Hedge apple</option>
+					<option>Boysenberry</option>
+					<option>Apple</option>
+					<option>Pomegranate tree</option>
+				</select>
+				<select class="select3">					
+					<option>Banana</option>
+					<option>Cucumber</option>
+					<option>Strawberry</option>
+					<option>Hedge apple</option>
+					<option>Boysenberry</option>
+					<option>Apple</option>
+					<option>Pomegranate tree</option>
+				</select>
+				<div class="cl"></div>
+				<br />
+				<br />
+				<br />		
+				<select class="select4">					
+					<option>Banana</option>
+					<option>Cucumber</option>
+					<option>Strawberry</option>
+					<option>Hedge apple</option>
+					<option>Boysenberry</option>
+					<option>Apple</option>
+					<option>Pomegranate tree</option>
+				</select>		
+				<select class="select5">					
+					<option>Banana</option>
+					<option>Cucumber</option>
+					<option>Strawberry</option>
+					<option>Hedge apple</option>
+					<option>Boysenberry</option>
+					<option>Apple</option>
+					<option>Pomegranate tree</option>
+				</select>
+				<div class="cl"></div>
+			</div>
+<div class="code">
+<pre>
+<span class="tag">&lt;script src=<span>"js/jquery-1.6.4.min.js"</span> type=<span>"text/javascript"</span>&gt;&lt;/script&gt;
+&lt;script src=<span>"js/jquery-skinner.js"</span> type=<span>"text/javascript"</span>&gt;&lt;/script&gt;
+&lt;script type=<span>"text/javascript"</span>&gt;</span>
+
+	$(<strong>function</strong>(){
+
+		$(<span>'.select1'</span>).skinner({<span>'width'</span>:<span>'200px'</span>,<span>'maxitem'</span>:<span>'4'</span>});
+		
+		$(<span>'.select2'</span>).skinner({<span>'type'</span>:<span>'left'</span>,<span>'width'</span>:<span>'150px'</span>,<span>'maxitem'</span>:<span class="bool">false</span>});	
+		
+		$(<span>'.select3'</span>).skinner({<span>'type'</span>:<span>'right'</span>,<span>'width'</span>:<span>'100px'</span>});
+		
+		$(<span>'.select4'</span>).skinner({<span>'type'</span>:<span>'left'</span>,<span>'width'</span>:<span>'50px'</span>,<span>'textwrap'</span>:<span class="bool">true</span>});	
+		
+		$(<span>'.select5'</span>).skinner({<span>'type'</span>:<span>'right'</span>});
+		
+	});	
+
+<span class="tag">&lt;/script&gt;</span>
+</pre>
+</div>
+			<h2>Changelog:</h2>
+			<ul class="release">
+				<li><strong>v 1.2</strong> added max item to show option</li>
+				<li><strong>v 1.1</strong> added text wrap option</li>
+				<li><strong>v 1.0</strong> first relase</li>
+			</ul>
+			<br />
+			<h2>Credits:</h2>
+			<ul class="release">
+				<li><span>Author</span>: Andrea (anbi) Bianchin</li>
+				<li><span>Twitter</span>: <a href="http://twitter.com/#!/anbi">@anbi</a></li>
+				<li><span>Homesite</span>: <a href="http://www.andreabianchin.it#projects" title="Andrea (anbi) Bianchin's homesite">www.andreabianchin.it</a></li>
+			</ul>		
+	</body>
+</html>
