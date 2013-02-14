@@ -8,10 +8,10 @@
 **************************************************************************
 *************************************************************************/
 /* css for select customization */
-.select-skinned{font-size:12px;font-family:Arial;position:relative}
+.select-skinned{font-size:12px; font-family:Arial; position:relative}
 .select-skinned-text{background-image:url(i/skinned-select-arrow.jpg)}
-.select-skinned-cont{background:#fff;margin-right:13px;font-size:11px;white-space:nowrap;overflow:hidden;padding:0px 3px;cursor:pointer;line-height:18px;height:18px}
-.select-skinned-text{background-repeat:no-repeat;background-position:center right;border:1px solid #ccc;width:auto;cursor:pointer}	
-.select-skinned ul{list-style:none;margin:0;padding:0;cursor:pointer;z-index:1000;position:absolute;background:#e0e0e0;color:#666;font-size:12px;border:1px solid #999}
-.select-skinned ul li{padding:2px 3px;white-space:nowrap}
-.select-skinned ul li.hover{background:#ccc;}
+.select-skinned-cont{background:#fff; margin-right:13px; font-size:11px; white-space:nowrap; overflow:hidden; padding:0px 3px; cursor:pointer; line-height:18px; height:18px}
+.select-skinned-text{background-repeat:no-repeat; background-position:center right; border:1px solid #ccc; width:auto; cursor:pointer}	
+.select-skinned ul{list-style:none; margin:0; padding:0; cursor:pointer; z-index:1000; position:absolute; background:#e0e0e0; color:#666; font-size:12px; border:1px solid #999}
+.select-skinned ul li{padding:2px 3px; white-space:nowrap}
+.select-skinned ul li.hover{background:#ccc}
