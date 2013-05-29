@@ -42,3 +42,13 @@ $(function(){
 	});
 ```	
 
+<h3>Changelog</h3>
+<ul>
+<li>v 1.2 added max item to show option</li>
+<li>v 1.1 added text wrap option</li>
+<li>v 1.0 first relase</li>
+</ul>
+
+<h3>Credits</h3>
+Author: *Andrea ([@anbi](http://www.twitter.com/anbi)) Bianchin*<br>
+Homesite: *www.andreabianchin.it*
