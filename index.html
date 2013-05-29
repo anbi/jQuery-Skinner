@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="jQuery Skinner : A jQuery plugin for skin a html combobox (select)" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>jQuery Skinner</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/anbi/jQuery-Skinner">View on GitHub</a>
+
+          <h1 id="project_title">jQuery Skinner</h1>
+          <h2 id="project_tagline">A jQuery plugin for skin a html combobox (select)</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/anbi/jQuery-Skinner/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/anbi/jQuery-Skinner/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="jquery-skinner" class="anchor" href="#jquery-skinner"><span class="octicon octicon-link"></span></a>jQuery-Skinner</h1>
+
+<h1></h1>
+
+<p>A jQuery plugin for skin a html combobox (select)
+<br>
+If you find any bug, report it on twitter <a href="http://www.twitter.com/anbi">@anbi</a>.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Include Javascript and Stylesheet</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"js/jquery-skinner.js"</span> <span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"css/jquery-skinner.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<p>Insert html select tag with classname:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"myNewSelect"</span><span class="nt">&gt;</span>                    
+    <span class="nt">&lt;option&gt;</span>Banana<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Cucumber<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">selected=</span><span class="s">"selected"</span><span class="nt">&gt;</span>Strawberry<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Hedge apple<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Boysenberry<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Apple<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option&gt;</span>Pomegranate tree<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</pre></div>
+
+<p>Insert Javascript</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>           
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.myNewSelect'</span><span class="p">).</span><span class="nx">skinner</span><span class="p">({</span><span class="s1">'width'</span><span class="o">:</span><span class="s1">'200px'</span><span class="p">,</span> <span class="s1">'maxitem'</span><span class="o">:</span><span class="s1">'4'</span><span class="p">});</span>
+
+<span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="list-of-params" class="anchor" href="#list-of-params"><span class="octicon octicon-link"></span></a>List of params</h3>
+
+<div class="highlight"><pre>    <span class="nx">$</span><span class="p">(</span><span class="s1">'.myNewSelect'</span><span class="p">).</span><span class="nx">skinner</span><span class="p">({</span>
+        <span class="s1">'type'</span><span class="o">:</span><span class="s1">'left'</span><span class="p">,</span>      <span class="c1">// Floating of element i.e. 'left' or 'right'</span>
+        <span class="s1">'width'</span><span class="o">:</span><span class="s1">'150px'</span><span class="p">,</span>    <span class="c1">// Specify a fixed width in pixel i.e. '150px</span>
+        <span class="s1">'maxitem'</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>    <span class="c1">// Maximum number of item to show i.e. '4'</span>
+        <span class="s1">'textwrap'</span><span class="o">:</span><span class="kc">true</span>     <span class="c1">// Force text wrap at width of select i.e true or false</span>
+    <span class="p">});</span>
+</pre></div>
+
+<h3>
+<a name="changelog" class="anchor" href="#changelog"><span class="octicon octicon-link"></span></a>Changelog</h3>
+
+<ul>
+<li>v 1.2 added max item to show option</li>
+<li>v 1.1 added text wrap option</li>
+<li>v 1.0 first relase</li>
+</ul><h3>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h3>
+
+<p>Author: <em>Andrea (<a href="http://www.twitter.com/anbi">@anbi</a>) Bianchin</em><br>
+Homesite: <em><a href="http://www.andreabianchin.it">www.andreabianchin.it</a></em></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">jQuery Skinner maintained by <a href="https://github.com/anbi">anbi</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
