@@ -1,0 +1,60 @@
+/************************************************************************
+*************************************************************************
+@Name :		skinner - jQuery Plugin
+@Revison :  1.2
+@Date :		17/10/2011
+@Author:	Andrea (anbi) Bianchin - http://www.andreabianchin.it#projects - http://twitter.com/#!/anbi
+@License : 	Open Source - MIT License : http://www.opensource.org/licenses/mit-license.php
+**************************************************************************
+*************************************************************************/
+/* css for select customization */
+
+@list-bg: #fff;
+@list-color: #333;
+@font-size: 13px;
+
+.select-skinned{
+  position:relative;
+  font-size:@font-size;
+  font-family:Arial;
+  ul{
+    position:absolute;
+    z-index:1000;
+    margin:0;
+    padding:0;
+    border:1px solid #999;
+    background:@list-bg;
+    color:@list-color;
+    list-style:none;
+    font-size:@font-size;
+    cursor:pointer;
+    li{
+      padding:2px 3px;
+      white-space:nowrap;
+      &.hover{
+        background:#ccc;
+      }
+    }
+  }
+}
+.select-skinned-text{
+  background-image:url(i/skinned-select-arrow.jpg);
+}
+.select-skinned-cont{
+  overflow:hidden;
+  margin-right:13px;
+  padding:0px 3px;
+  height:@font-size+6;
+  background:#fff;
+  white-space:nowrap;
+  font-size:@font-size;
+  line-height:@font-size+6;
+  cursor:pointer;
+}
+.select-skinned-text{
+  width:auto;
+  border:1px solid #ccc;
+  background-position:center right;
+  background-repeat:no-repeat;
+  cursor:pointer;
+}
