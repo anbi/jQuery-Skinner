@@ -2,3 +2,5 @@
 .select-skinned-text{background-image:url(i/skinned-select-arrow.jpg)}
 .select-skinned-cont{overflow:hidden;margin-right:13px;padding:0 3px;height:19px;background:#fff;white-space:nowrap;font-size:13px;line-height:19px;cursor:pointer}
 .select-skinned-text{width:auto;border:1px solid #ccc;background-position:center right;background-repeat:no-repeat;cursor:pointer}
+.select-skinned-pure-text{ background-image:url(i/skinned-select-arrow-pure-text.jpg); border-color:transparent; }
+.select-skinned-pure-text .select-skinned-cont{ background:transparent; }

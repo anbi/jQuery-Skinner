@@ -1,7 +1,7 @@
 /************************************************************************
 *************************************************************************
 @Name :		skinner - jQuery Plugin
-@Revison :  1.2
+@Revison :  1.2.2
 @Date :		17/10/2011
 @Author:	Andrea (anbi) Bianchin - http://www.andreabianchin.it#projects - http://twitter.com/#!/anbi
 @License : 	Open Source - MIT License : http://www.opensource.org/licenses/mit-license.php
@@ -9,21 +9,30 @@
 @Usage : 	allowed parameters
 			# type : 	- left > float left (default)
 						- right > float right
-			 			- block > display block
+						- block > display block
 			# width : 	- auto > (default)
-			 			- pixel > e.g. 100px
-			 			- percent > e.g. 80%
+						- pixel > e.g. 100px
+						- percent > e.g. 80%
 			# textwrap : - false > text doesn't wrap on dropdown (default)
-			 			 - true > text wrap on dropdown
+						- true > text wrap on dropdown
 			# maxitem : - 2,3,4,5... "n" > number of item to show (default = 6)
 						- false > show all item without scollbar
+			# minWidth	# width : 	- auto > (default)		number of the min-width of the text
+						- pixel > e.g. 100px
+						- percent > e.g. 80%
+			# itemMinWidth	- "n" > number of the min-width of the dropdown
+			# mode		-	"select"(default) > layout as select;
+					-	"pureText" > layout as pure text;
 **************************************************************************
+@modifiedDate : 15/01/2015
+@modifiedBy : will.v.king
+@modification : add supports for setting the min-width attribute of the text of the select and its dropdown-list; add a ' pure text ' visual mode.
 *************************************************************************/
 
 (function($) {
 	$.fn.skinner = function(opt){
-		var cfg = {'type':'block','width':'auto','textwrap':false,'maxitem':'6'};    
-	    if(opt){$.extend(cfg,opt);}
+		var cfg = {'type':'block','minWidth':'','width':'auto','textwrap':false,'maxitem':'6','itemMinWidth':'','mode':'select'};
+		if(opt){$.extend(cfg,opt);}
 		var element = this;
 		var skin = {
 			selectskinned: function (element){
@@ -31,7 +40,7 @@
 					sc = $(this);
 					sc.wrap('<div class="select-skinned" />');
 					childrennn = $('<ul></ul>').hide();
-					sc.children('option').each(function(i,e){				
+					sc.children('option').each(function(i,e){
 						myText = ($(e).html()=='') ? '&nbsp;' : $(e).html();
 						itemLI = $('<li>'+myText+'</li>').click(function(){
 							itemUL = $(this).parent('ul');
@@ -40,24 +49,24 @@
 							itemUL.next('select').find('option').eq(i).attr('selected','selected');
 							testoSelected = (itemUL.next('select').find('option').eq(i).text()=='') ? '&nbsp;' : itemUL.next('select').find('option').eq(i).text();
 							itemUL.prev('.select-skinned-text').html('<div class="select-skinned-cont">' + testoSelected + '</div>');
-							itemUL.next('select').change();					
+							itemUL.next('select').change();
 						});
 						childrennn.append(itemLI);
-						childrennn.hover(function(){},function(){ $(this).hide(); });						
+						childrennn.hover(function(){},function(){ $(this).hide(); });
 						$(document).click(function(e) { $('.select-skinned > ul').hide(); });
-						$('.select-skinned').click(function(e) { e.stopPropagation(); });					
+						$('.select-skinned').click(function(e) { e.stopPropagation(); });
 					});
-							
-					testoSel = (sc.children('option:selected').text()=='') ? '&nbsp;' : sc.children('option:selected').text();			
+
+					testoSel = (sc.children('option:selected').text()=='') ? '&nbsp;' : sc.children('option:selected').text();
 					selectedItem = $('<div class="select-skinned-text"><div class="select-skinned-cont">'+testoSel+'</div></div>');
 					selectedItem.click(function(){ 
-						elemUL = $(this).next('ul');						
+						elemUL = $(this).next('ul');
 						pos = $(this).parent('.select-skinned').position();
 						bodyScroll = $('body').scrollTop();
 						if($(window).height()<=(pos.top+elemUL.outerHeight()+15-bodyScroll)){
 							elemUL.css({'top':'auto','bottom':'0'})
 						}else{
-							elemUL.css({'top':$(this).prev('.select-skinned-text').children('.select-skinned-cont').height(),'bottom':'auto'});				
+							elemUL.css({'top':$(this).prev('.select-skinned-text').children('.select-skinned-cont').height(),'bottom':'auto'});
 						}
 						if($(window).width()<=(pos.left+elemUL.outerWidth())){
 							elemUL.css({'left':'auto','right':'0'})
@@ -70,18 +79,18 @@
 							for(i=0;i<cfg.maxitem;i++){
 								hTotItem += elemUL.children('li:eq('+i+')').outerHeight();
 							}
-							elemUL.css({'overflow-y':'scroll','height':hTotItem+'px'});	
-						}					
+							elemUL.css({'overflow-y':'scroll','height':hTotItem+'px'});
+						}
 					});
 					sc.before(selectedItem);
-					sc.before(childrennn);						
+					sc.before(childrennn);
 					sc.change(function(){ skin.checkSelect(element); });
-					sc.hide();					
+					sc.hide();
 				});
 				skin.addStyle();
-				
+
 			},
-			
+
 			checkSelect : function(elem){
 				$(elem).each(function(){
 					e = $(this);
@@ -96,26 +105,35 @@
 							itemUL.prev('.select-skinned-text').html('<div class="select-skinned-cont">'+itemUL.next('select').find('option').eq(i).text()+'</div>');
 							itemUL.next('select').change();
 						});
-						e.prev('ul').append(itemLI);						
-					});	
-				});				
+						e.prev('ul').append(itemLI);
+					});
+				});
 				skin.addStyle();
 			},
-			
+
 			resetSelect : function(e){
 				if($(e).prev('ul').size()!=0){
 					$(e).prev('ul').prev('.select-skinned-text').html('<div class="select-skinned-cont">' + $(e).find('option').eq(0).text() + '</div>');
 				}
 			},
-			
 			addStyle : function(){
-				if(cfg.type!='block'){ $(element).parent('.select-skinned').css({'float':cfg.type}); }							
-				$(element).parent('.select-skinned').width(cfg.width);
+				if(cfg.type!='block'){ $(element).parent('.select-skinned').css({'float':cfg.type}); }
+				$(element).parent('.select-skinned').css("min-width",(cfg.minWidth||cfg.width)).width(cfg.width).children('ul').css("min-width",(cfg.itemMinWidth||cfg.minWidth||cfg.width)).width(cfg.width);
 				if(cfg.textwrap){ $(element).parent('.select-skinned').children('ul').children('li').css({'white-space':'normal'}); }
 				$('.select-skinned > ul > li').hover( function(){$(this).attr({'class':'hover'});}, function(){$(this).attr({'class':''});} );
+				if('puretext'===cfg.mode.toLowerCase()){
+					var spt = "select-skinned-pure-text";
+					$(element).parent('.select-skinned').children('.select-skinned-text').addClass(spt).hover(function(){$(this).removeClass(spt);},function(){$(this).addClass(spt);});
+					}
 			}
-		}		
-		skin.selectskinned(element);		
-		return this;	
+		}
+		skin.selectskinned(element);
+		return this;
 	}
+	// e.g.
+	// $('.selectRight').skinner({'type':'right','maxitem':'20','minWidth':'40px'});
+	// $('.selectLeft').skinner({'type':'left','maxitem':'20','minWidth':'40px'});
+	// $('.selectPureTextRight').skinner({'type':'right','maxitem':'20','minWidth':'40px','mode':'pureText'});
+	// $('.selectPureTextLeft').skinner({'type':'left','maxitem':'20','minWidth':'40px','mode':'pureText'});
 })(jQuery);
+/* vim: set si sts=4 ts=4 sw=4 fdm=indent :*/
