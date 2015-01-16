@@ -35,19 +35,25 @@ $(function(){
 <h3>List of params</h3>
 ```javascript
 	$('.myNewSelect').skinner({
-		'type':'left',			// Floating of element i.e. 'left' or 'right'
-		'width':'150px',		// Specify a fixed width in pixel i.e. '150px
-		'maxitem':false,		// Maximum number of item to show i.e. '4'
-		'textwrap':true			// Force text wrap at width of select i.e true or false
-		,'minWidth':'40px'		//	Minimum width of the 'textinput'
-		,'itemMinWidth':'40px'	//	Minimum width of the dropdown list
-		,'mode':'pureText'		//	the visual mode of the element.
+		'type':'left',					// Floating of element i.e. 'left' or 'right'
+		'width':'150px',				// Specify a fixed width in pixel i.e. '150px
+		'maxitem':false,				// Maximum number of item to show i.e. '4'
+		'textwrap':true					// Force text wrap at width of select i.e true or false
+		,'minWidth':'40px'				//	Minimum width of the 'textinput'
+		,'itemMinWidth':'40px'			//	Minimum width of the dropdown list
+		,'mode':'pureText'				//	the visual mode of the element.
+		,'placeHolder':'please select'	//	set the place holder.
+		,'valueNullable':'false'		//	enable leave it empty or not.
 	});
 ```
 
 <h3>Changelog</h3>
 <ul>
 
+<li>v 1.3.0 added placeHolder; added valueNullable; Fixed Variable Scope Bug;
+				Improved the function usage (_li_click,_apply_max_item is added
+					, checkSelect has been changed to _init_li);
+				added dorpdownlist auto hide logic;</li>
 <li>v 1.2.2 add a ' pure text ' visual mode</li>
 <li>v 1.2.1 add supports for setting the min-width attribute of the text of the select and its dropdown-list</li>
 <li>v 1.2 added max item to show option</li>

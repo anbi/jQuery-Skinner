@@ -32,6 +32,15 @@
 			$('.select3').skinner({'type':'right','width':'100px'});			
 			$('.select4').skinner({'type':'left','width':'50px','textwrap':true});				
 			$('.select5').skinner({'type':'right'});			
+			$('.select6').each(function(){
+				var $this = $(this);
+				$this.skinner({'type':$this.css("float"),'maxitem':'20'
+					,'minWidth':($this.css('min-width')||"40px")
+					,'mode': ($this.hasClass('pureText')?'pureText':'select')
+					,'valueNullable': ($this.hasClass('valueNullable')?'true':'false')
+					,'placeHolder':'請選擇' // please select
+				});
+			});
 		});
 	</script>
 </head>
@@ -95,6 +104,15 @@
 					<option>Apple</option>
 					<option>Pomegranate tree</option>
 				</select>
+				<select class="select6 valueNullable pureText" style="min-width:80px;">
+					<option>Banana</option>
+					<option>Cucumber</option>
+					<option>Strawberry</option>
+					<option>Hedge apple</option>
+					<option>Boysenberry</option>
+					<option>Apple</option>
+					<option>Pomegranate tree</option>
+				</select>
 				<div class="cl"></div>
 			</div>
 <div class="code">
@@ -114,6 +132,15 @@
 		$(<span>'.select4'</span>).skinner({<span>'type'</span>:<span>'left'</span>,<span>'width'</span>:<span>'50px'</span>,<span>'textwrap'</span>:<span class="bool">true</span>});	
 		
 		$(<span>'.select5'</span>).skinner({<span>'type'</span>:<span>'right'</span>});
+			$(<span>'.select6'</span>).each(function(){
+				var $this = $(this);
+				$this.skinner({<span>'type'</span>:$this.css("float"),<span>'maxitem'</span>:<span>'20'</span>
+					,<span>'minWidth'</span>:($this.css(<span>'min-width'</span>)||<span>'40px'</span>)
+					,<span>'mode'</span>: ($this.hasClass(<span>'pureText'</span>)?<span>'pureText'</span>:<span>'select'</span>)
+					,<span>'valueNullable'</span>: ($this.hasClass(<span>'valueNullable'</span>)?'true'</span>:<span>'false'</span>)
+					,<span>'placeHolder'</span>:<span>'請選擇'</span> // please select
+				});
+			});
 		
 	});	
 
@@ -122,6 +149,12 @@
 </div>
 			<h2>Changelog:</h2>
 			<ul class="release">
+				<li><strong>v 1.3.0</strong> added placeHolder; added valueNullable; Fixed Variable Scope Bug;
+								Improved the function usage (_li_click,_apply_max_item is added
+									, checkSelect has been changed to _init_li);
+								added dorpdownlist auto hide logic;</li>
+				<li><strong>v 1.2.2</strong> add a ' pure text ' visual mode</li>
+				<li><strong>v 1.2.1</strong> add supports for setting the min-width attribute of the text of the select and its dropdown-list</li>
 				<li><strong>v 1.2</strong> added max item to show option</li>
 				<li><strong>v 1.1</strong> added text wrap option</li>
 				<li><strong>v 1.0</strong> first relase</li>
