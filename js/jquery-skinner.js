@@ -136,12 +136,13 @@
 						});
 				},
 				_apply_max_item: function() {
-					var $UL = $(this).prev('ul');
+					var $UL = $(this);
 					if (cfg.maxitem) { // apply the max item to show;
 						var hTotItem = 0;
 						for (i = 0; i < cfg.maxitem; i++) {
-							hTotItem += $UL.children('li:eq(' + i + ')').outerHeight(true);
+							hTotItem += $UL.children('li:eq(' + i + ')').outerHeight();
 						}
+						console.log(hTotItem);
 						$UL.css({
 								'overflow-y': 'scroll',
 								'height': hTotItem + 'px'
@@ -174,7 +175,7 @@
 								testoSel = (selectedOptions.size() <= 0 ? cfg.placeHolder : (selectedOptions.text() === '' ? '&nbsp;' : selectedOptions.text()));
 								selectedItem = $('<div class="select-skinned-text"><div class="select-skinned-cont">' + testoSel + '</div></div>');
 								selectedItem.click(function() {
-										var elemUL = $(this).next('ul');
+										var $this = $(this), elemUL = $this.next('ul');
 										pos = $(this).parent('.select-skinned').position();
 										bodyScroll = $('body').scrollTop();
 										if ($(window).height() <= (pos.top + elemUL.outerHeight() + 15 - bodyScroll)) {
@@ -204,7 +205,7 @@
 										} else {
 											elemUL.show();
 										}
-										skin._apply_max_item();
+										skin._apply_max_item.call($this.next('ul').get(0));
 									});
 								sc.before(selectedItem);
 								sc.before(childrennn);
