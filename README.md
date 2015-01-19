@@ -64,4 +64,4 @@ $(function(){
 <h3>Credits</h3>
 Author: *Andrea ([@anbi](http://www.twitter.com/anbi)) Bianchin*<br>
 Homesite: *www.andreabianchin.it*<br>
-Contributor: *([@will-v-king](http://www.twitter.com/will-v-king)*<br> 
+Contributor: *[@will-v-king](http://www.twitter.com/will-v-king)*<br> 
