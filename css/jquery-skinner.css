@@ -1,4 +1,7 @@
-.select-skinned{position:relative;font-size:13px;font-family:Arial}.select-skinned ul{position:absolute;z-index:1000;margin:0;padding:0;border:1px solid #999;background:#fff;color:#333;list-style:none;font-size:13px;cursor:pointer}.select-skinned ul li{padding:2px 3px;white-space:nowrap}.select-skinned ul li.hover{background:#ccc}
+.select-skinned{position:relative;font-size:13px;font-family:Arial}.select-skinned ul{position:absolute;z-index:1000;margin:0;padding:0;border:1px solid #999;background:#f0f0f0;color:#333;list-style:none;font-size:13px;cursor:pointer;text-align:left;}.select-skinned ul li{padding:2px 3px;white-space:nowrap}.select-skinned ul li.hover{background:#ccc}
 .select-skinned-text{background-image:url(i/skinned-select-arrow.jpg)}
-.select-skinned-cont{overflow:hidden;margin-right:13px;padding:0 3px;height:19px;background:#fff;white-space:nowrap;font-size:13px;line-height:19px;cursor:pointer}
+.select-skinned-cont{overflow:hidden;margin-right:13px;padding:0 3px;height:19px;background:#fff;white-space:nowrap;font-size:13px;line-height:19px;cursor:pointer;text-overflow:ellipsis;}
 .select-skinned-text{width:auto;border:1px solid #ccc;background-position:center right;background-repeat:no-repeat;cursor:pointer}
+.select-skinned-pure-text{ background-image:url(i/skinned-select-arrow-pure-text.jpg); border-color:transparent; }
+.select-skinned-pure-text .select-skinned-cont{ background:transparent; }
+.select-skinned-li-selected{ background:#aaa; }
