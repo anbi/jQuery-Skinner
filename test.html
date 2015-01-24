@@ -28,12 +28,20 @@
 
     <script type="text/javascript">
 		$(function(){			
-			$('.select1').skinner({'width':'200px','maxitem':'4'});			
-			$('.select2').skinner({'type':'left','width':'150px','maxitem':false});			
-			$('.select3').skinner({'type':'right','width':'100px'});			
-			$('.select4').skinner({'type':'left','width':'50px','textwrap':true});				
-			$('.select5').skinner({'type':'right'});			
-			$('.select6').each(function(){
+			var timeStart = (new Date()).getTime(),count = 200;
+			for(var i=0; i<count; i++){
+				$('.test').append('<select class="select" style="'+(0===i%2?'float:none;':'float:right;')+'">\
+					<option>Banana</option>\
+					<option>Cucumber</option>\
+					<option>Strawberry</option>\
+					<option>Hedge apple</option>\
+					<option>Boysenberry</option>\
+					<option>Apple</option>\
+					<option>Pomegranate tree</option>\
+					</select>');
+			}
+			var initDomTime = (new Date()).getTime() - timeStart;
+			$('.select').each(function(){
 				var $this = $(this);
 				$this.skinner({'type':$this.css("float"),'maxitem':'20'
 					,'minWidth':($this.css('min-width')||"40px")
@@ -42,6 +50,8 @@
 					,'placeHolder':'請選擇' // please select
 				});
 			});
+			var renderSkinnerTime = (new Date()).getTime() - timeStart - initDomTime;
+			$('.result').append('<div class="cl">InitDomUseTime:'+initDomTime+';<br/>Rendering Skinner Time:'+renderSkinnerTime+'<br/>It is : '+renderSkinnerTime/count+' per one.</div>');
 		});
 	</script>
 </head>
@@ -51,74 +61,11 @@
 			<h3>jquery-skinner.js</h3>
 			<p>If you find any bug, report it by direct message on twitter. <a href="http://twitter.com/#!/anbi">@anbi</a></p>
 			<br />
-			<div class="example">
-				<select class="select1">					
-					<option>Banana</option>
-					<option>Cucumber</option>
-					<option>Strawberry</option>
-					<option>Hedge apple</option>
-					<option>Boysenberry</option>
-					<option>Apple</option>
-					<option>Pomegranate tree</option>
-				</select>
-				<div class="cl"></div>
-				<br />
-				<br />
-				<br />
-				<select class="select2">					
-					<option>Banana</option>
-					<option>Cucumber</option>
-					<option>Strawberry</option>
-					<option>Hedge apple</option>
-					<option>Boysenberry</option>
-					<option>Apple</option>
-					<option>Pomegranate tree</option>
-				</select>
-				<select class="select3">					
-					<option>Banana</option>
-					<option>Cucumber</option>
-					<option>Strawberry</option>
-					<option>Hedge apple</option>
-					<option>Boysenberry</option>
-					<option>Apple</option>
-					<option>Pomegranate tree</option>
-				</select>
-				<div class="cl"></div>
-				<br />
-				<br />
-				<br />		
-				<select class="select4">					
-					<option>Banana</option>
-					<option>Cucumber</option>
-					<option>Strawberry</option>
-					<option>Hedge apple</option>
-					<option>Boysenberry</option>
-					<option>Apple</option>
-					<option>Pomegranate tree</option>
-				</select>		
-				<select class="select5">					
-					<option>Banana</option>
-					<option>Cucumber</option>
-					<option>Strawberry</option>
-					<option>Hedge apple</option>
-					<option>Boysenberry</option>
-					<option>Apple</option>
-					<option>Pomegranate tree</option>
-				</select>
-				<div class="cl"></div>
-				<br />
-				<br />
-				<br />
-				<select class="select6 valueNullable pureText" style="min-width:80px;">
-					<option>Banana</option>
-					<option>Cucumber</option>
-					<option>Strawberry</option>
-					<option>Hedge apple</option>
-					<option>Boysenberry</option>
-					<option>Apple</option>
-					<option>Pomegranate tree</option>
-				</select>
-				<div class="cl"></div>
+			<div style="max-height:180px;overflow:auto;">
+			<div class="test" style="max-height:200px;overflow:auto;">
+			</div>
+			</div>
+			<div class="result" style="max-height:200px">
 			</div>
 <div class="code">
 <pre>
