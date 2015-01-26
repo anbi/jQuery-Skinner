@@ -65,7 +65,7 @@
 					'hideMode': 'auto'
 				}
 			};
-			if (opt) {
+			if (undefined !== opt) {
 				$.extend(cfg, opt);
 			}
 			var element = this;
@@ -171,7 +171,7 @@
 						skin.$.select = $element;
 						$element.wrap('<div class="select-skinned" />');
 						skin.$.container = $element.parent();
-						var childrennn = $('<ul></ul>').hide();
+						var childrennn = $('<ul style="display:none;"></ul>');
 						skin.$.acceptor = childrennn;
 						$element.parent().on('mouseleave', function() {
 								if ('auto' === cfg.dropdownList.hideMode || 'leave' === cfg.dropdownList.hideMode) {
