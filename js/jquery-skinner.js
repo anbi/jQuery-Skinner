@@ -94,12 +94,14 @@
 								$selectOptionI.attr('selected', 'selected');
 								(skin.$.controller).html('<div class="select-skinned-cont">' + $selectOptionI.text() + '</div>');
 								$this.addClass('select-skinned-li-selected');
+								itemUL.next('select').change();
 							} else {
 								if (true === cfg.valueNullable) {
 									$selectOptionI.removeAttr('selected');
 									$selectOption0.attr('selected', 'selected'); // the first option is the default value, as select thought;
 									(skin.$.controller).html('<div class="select-skinned-cont">' + $selectOption0.html() || (cfg.placeHolder || '&nbsp;') + '</div>');
 									$this.removeClass('select-skinned-li-selected');
+									itemUL.next('select').change();
 								} else {}
 							}
 						} else { // TO DO support multiple select
@@ -120,7 +122,6 @@
 							}
 						*/
 						}
-						itemUL.next('select').change();
 					},
 					_init_li: function(elem) {
 						var $elem = $(elem),
