@@ -106,21 +106,21 @@
 							}
 						} else { // TO DO support multiple select
 							/*
-						 * for multiple select
-							if(selectSkinnedContHTML !== $selectOptions.eq(i).text()){// select
-								// $selectOptions.removeAttr('selected');
-								$selectOptions.eq(i).attr('selected','selected');
-								itemUL.prev('.select-skinned-text').html('<div class="select-skinned-cont">'+$selectOptions.eq(i).text()+'</div>');
-								$this.addClass('select-skinned-li-selected');
-							}else{// select again
-								$selectOptions.eq(i).removeAttr('selected');
-								if(0 === $select.find('option[selected]').size()){// the first option is the default value, as select thought;
-									$selectOption0.attr('selected','selected');
+							 * for multiple select
+								if(selectSkinnedContHTML !== $selectOptions.eq(i).text()){// select
+									// $selectOptions.removeAttr('selected');
+									$selectOptions.eq(i).attr('selected','selected');
+									itemUL.prev('.select-skinned-text').html('<div class="select-skinned-cont">'+$selectOptions.eq(i).text()+'</div>');
+									$this.addClass('select-skinned-li-selected');
+								}else{// select again
+									$selectOptions.eq(i).removeAttr('selected');
+									if(0 === $select.find('option[selected]').size()){// the first option is the default value, as select thought;
+										$selectOption0.attr('selected','selected');
+									}
+									itemUL.prev('.select-skinned-text').html('<div class="select-skinned-cont">'+(cfg.placeHolder||'&nbsp;')+'</div>');
+									$this.removeClass('select-skinned-li-selected');
 								}
-								itemUL.prev('.select-skinned-text').html('<div class="select-skinned-cont">'+(cfg.placeHolder||'&nbsp;')+'</div>');
-								$this.removeClass('select-skinned-li-selected');
-							}
-						*/
+							*/
 						}
 					},
 					_init_li: function(elem) {
