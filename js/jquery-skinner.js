@@ -102,7 +102,9 @@
 									(skin.$.controller).html('<div class="select-skinned-cont">' + $selectOption0.html() || (cfg.placeHolder || '&nbsp;') + '</div>');
 									$this.removeClass('select-skinned-li-selected');
 									itemUL.next('select').change();
-								} else {}
+								} else {
+									itemUL.next('select').trigger('unchange');
+								}
 							}
 						} else { // TO DO support multiple select
 							/*
