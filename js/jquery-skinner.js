@@ -94,16 +94,16 @@
 								$selectOptionI.attr('selected', 'selected');
 								(skin.$.controller).html('<div class="select-skinned-cont">' + $selectOptionI.text() + '</div>');
 								$this.addClass('select-skinned-li-selected');
-								itemUL.next('select').change();
+								itemUL.nextAll('select:first').change();
 							} else {
 								if (true === cfg.valueNullable) {
 									$selectOptionI.removeAttr('selected');
 									$selectOption0.attr('selected', 'selected'); // the first option is the default value, as select thought;
 									(skin.$.controller).html('<div class="select-skinned-cont">' + $selectOption0.html() || (cfg.placeHolder || '&nbsp;') + '</div>');
 									$this.removeClass('select-skinned-li-selected');
-									itemUL.next('select').change();
+									itemUL.nextAll('select:first').change();
 								} else {
-									itemUL.next('select').trigger('unchange');
+									itemUL.nextAll('select:first').trigger('unchange');
 								}
 							}
 						} else { // TO DO support multiple select
@@ -197,7 +197,7 @@
 						skin.$.controller = selectedItem;
 						selectedItem.click(function() {
 								var $this = $(this),
-									elemUL = $this.next('ul'),
+									elemUL = $this.nextAll('ul:first'),
 									pos = skin.$.container.position(),
 									parentScrollable = skin.$.container.parent(':scrollable'),
 									parentTop = 0,
