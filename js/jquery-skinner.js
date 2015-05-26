@@ -211,13 +211,13 @@
 								var parentScrollTop = parentScrollable.scrollTop();
 								if (parentScrollable.height() + parentTop <= (pos.top + elemUL.outerHeight() + (15) - parentScrollTop)) {
 									elemUL.css({
-											'top': 'auto',
-											'bottom': '0'
+											'top': $this.prev('.select-skinned-text').children('.select-skinned-cont').height(),
+											'bottom': 'auto'
 										});
 								} else {
 									elemUL.css({
-											'top': $this.prev('.select-skinned-text').children('.select-skinned-cont').height(),
-											'bottom': 'auto'
+											'top': 'auto',
+											'bottom': '0'
 										});
 								}
 								if (parentScrollable.width() + parentLeft <= (pos.left + elemUL.outerWidth())) {
@@ -286,7 +286,9 @@
 						}
 					}
 				});
-			skin.selectskinned(element);
+			if ($(element).parent().is('.select-skinned')) {} else {
+				skin.selectskinned(element);
+			}
 			return this;
 		};
 		// e.g.
