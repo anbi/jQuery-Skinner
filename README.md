@@ -50,6 +50,9 @@ $(function(){
 <h3>Changelog</h3>
 <ul>
 
+<li>v 1.3.5 improve the drop down container's drop behaviour logical; 
+		added disabled option;
+		added events:beforeClickItem/whenClickItem/afterClickItem</li>
 <li>v 1.3.1 speed up the rendering process. 
 		update the perfermance and the logic about the dropdown direction.
 		change only trigger when value changed. 

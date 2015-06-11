@@ -1,7 +1,7 @@
 /************************************************************************
 *************************************************************************
 @Name :		skinner - jQuery Plugin
-@Revison :  1.3.1
+@Revison :  1.3.5
 @Date :		17/10/2011
 @Author:	Andrea (anbi) Bianchin - http://www.andreabianchin.it#projects - http://twitter.com/#!/anbi
 @License :	Open Source - MIT License : http://www.opensource.org/licenses/mit-license.php
@@ -30,6 +30,9 @@
 													, the first option is the default option.
 							-	true				the first option is the empty option,
 													and it won't be show in the list.
+			# disabled		-	false(default)	the disabled status of the select
+							-	true			when the disabled attr of the select is 'disabled',
+													true will be set automatically.
 **************************************************************************
 @modifiedDate : 15/01/2015
 @modifiedBy : Will.V.King
@@ -47,6 +50,14 @@
 @modifiedData : 16/01/2015
 @modifiedBy : Will.V.King
 @modification : changed the value of valueNullable from string to boolean.
+*************************************************************************
+@modifiedData : 26/05/2015
+@modifiedBy : Will.V.King
+@modification : improve the drop down list behaviour.
+*************************************************************************
+@modifiedData : 05/06/2015
+@modifiedBy : Will.V.King
+@modification : added disabled option; added beforeClickItem/whenClickItem/afterClickItem
 *************************************************************************/
 
 (function($) {
@@ -61,6 +72,7 @@
 				'mode': 'select',
 				'placeHolder': 'please select',
 				'valueNullable': false,
+				'disabled': false,
 				'dropdownList': {
 					'hideMode': 'auto'
 				}
@@ -69,6 +81,7 @@
 				$.extend(cfg, opt);
 			}
 			var element = this;
+			cfg.disabled = $(element).prop('disabled');
 			var skin = {
 				$: {
 					select: null, // select
@@ -82,6 +95,7 @@
 						var $this = this,
 							itemUL = skin.$.acceptor;
 						itemUL.hide();
+						$(element).triggerHandler('whenClickItem', [i, $this, e]);
 						var selectSkinnedContHTML = (skin.$.controller).children('.select-skinned-cont').html(),
 							$select = skin.$.select,
 							$selectOptions = $select.find('option'),
@@ -141,8 +155,13 @@
 										} else {}
 									}
 								} else {}
-								var itemLI = $('<li>' + myText + '</li>').click(function() {
-										skin._li_click.call(itemLI, i, $elem);
+								var itemLI = $('<li>' + myText + '</li>').click(function(ev) {
+										return $(element).triggerHandler('beforeClickItem', [ i, itemLI, $elem]);
+									}).click(function(ev) {
+										if (false === ev.result) {} else {
+											skin._li_click.call(itemLI, i, $elem);
+											$(element).triggerHandler('afterClickItem', [i, itemLI, $elem]);
+										}
 									});
 								if (undefined !== $el.attr('selected')) { // add selected style to li
 									itemLI.addClass('select-skinned-li-selected');
@@ -198,26 +217,26 @@
 						selectedItem.click(function() {
 								var $this = $(this),
 									elemUL = $this.nextAll('ul:first'),
-									pos = skin.$.container.position(),
+									pos = skin.$.container.offset(),
 									parentScrollable = skin.$.container.parent(':scrollable'),
 									parentTop = 0,
 									parentLeft = 0;
 								if (0 === parentScrollable.size()) {
 									parentScrollable = $(window);
 								} else {
-									parentTop = parentScrollable.position().top;
-									parentLeft = parentScrollable.position().left;
+									parentTop = parentScrollable.offset().top;
+									parentLeft = parentScrollable.offset().left;
 								}
 								var parentScrollTop = parentScrollable.scrollTop();
-								if (parentScrollable.height() + parentTop <= (pos.top + elemUL.outerHeight() + (15) - parentScrollTop)) {
-									elemUL.css({
-											'top': $this.prev('.select-skinned-text').children('.select-skinned-cont').height(),
-											'bottom': 'auto'
-										});
-								} else {
+								if ((elemUL.outerHeight() + (15)) < (pos.top - parentScrollTop) && (parentScrollable.height() + parentTop <= (pos.top + elemUL.outerHeight() + (15) - parentScrollTop))) {
 									elemUL.css({
 											'top': 'auto',
 											'bottom': '0'
+										});
+								} else {
+									elemUL.css({
+											'top': $this.prev('.select-skinned-text').children('.select-skinned-cont').height(),
+											'bottom': 'auto'
 										});
 								}
 								if (parentScrollable.width() + parentLeft <= (pos.left + elemUL.outerWidth())) {
@@ -234,7 +253,12 @@
 								if (elemUL.is(':visible')) {
 									elemUL.hide();
 								} else {
-									elemUL.show();
+									cfg.disabled = $(this).siblings('select:first').prop('disabled');
+									if (true === cfg.disabled) {
+										elemUL.hide();
+									} else {
+										elemUL.show();
+									}
 								}
 								skin._apply_max_item.call(elemUL.get(0));
 							});
@@ -271,14 +295,22 @@
 							}, function() {
 								$(this).removeClass('hover');
 							});
+						(skin.$.controller).hover(function() {
+								cfg.disabled = $(this).siblings('select:first').prop('disabled');
+							}, function() {});
 						if ('puretext' === cfg.mode.toLowerCase()) {
 							var spt = "select-skinned-pure-text";
 							(skin.$.controller).addClass(spt).hover(function() {
-									$(this).removeClass(spt);
+									cfg.disabled = $(this).siblings('select:first').prop('disabled');
+									if (false === cfg.disabled) {
+										$(this).removeClass(spt);
+									} else {}
 								}, function() {
-									$(this).addClass(spt);
+									if (false === cfg.disabled) {
+										$(this).addClass(spt);
+									} else {}
 								});
-						}
+						} else {}
 						if ('block' !== cfg.type) {
 							$selectSkinned.css({
 									'float': cfg.type
