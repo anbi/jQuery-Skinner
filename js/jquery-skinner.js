@@ -156,14 +156,14 @@
 									}
 								} else {}
 								var itemLI = $('<li>' + myText + '</li>').click(function(ev) {
-										return $(element).triggerHandler('beforeClickItem', [ i, itemLI, $elem]);
+										return $(element).triggerHandler('beforeClickItem', [i, itemLI, $elem]);
 									}).click(function(ev) {
 										if (false === ev.result) {} else {
 											skin._li_click.call(itemLI, i, $elem);
 											$(element).triggerHandler('afterClickItem', [i, itemLI, $elem]);
 										}
 									});
-								if (undefined !== $el.attr('selected')) { // add selected style to li
+								if (true === $el.prop('selected')) { // add selected style to li
 									itemLI.addClass('select-skinned-li-selected');
 								} else {}
 								$UL.append(itemLI);
