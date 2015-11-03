@@ -285,6 +285,9 @@
 							cfg.width = $element.width();
 						} else {}
 						$selectSkinned.css("min-width", (cfg.minWidth || cfg.width)).width(cfg.width).children('ul').css("min-width", (cfg.itemMinWidth || cfg.width)); //.width(cfg.width);
+						$selectSkinned.css({
+							'height': skin.$.controller.height() // \9
+							});
 						if (true === cfg.textwrap) {
 							$LIs.css({
 									'white-space': 'normal'
