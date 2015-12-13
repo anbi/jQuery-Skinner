@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+	<title>Skinner</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+		body{font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size: 12px; background: #ededed; margin:25px;}
+		.cl{float:none; clear:both;}
+		.fl{float:left;}
+		.fr{float:right;}
+		.example{ margin:25px auto; padding:15px; border:1px solid #fff;background:#f4f4f4; box-shadow:0 0 8px #666; -webkit-box-shadow:0 0 8px #666; -moz-box-shadow:0 0 8px #666;}
+		.code{ margin:25px auto; padding:15px; border:1px solid #333; background:#141414; box-shadow:0 0 8px #666; -webkit-box-shadow:0 0 8px #666; -moz-box-shadow:0 0 8px #666; color:#f8f8f8; font-size:11px;}
+		.code strong{ font-weight:normal; color:#f9ee98}
+		.code span{color:#8f9d6a;}
+		.code span.tag{color:#cda869}
+		.code span.bool{color:#b4431f}
+		p span{color :#666; font-size:10px;}
+		.release{ font-style: italic}
+		.release span{ color: #333;}
+	</style>
+    <!-- load style -->
+    <link href="css/jquery-skinner.css" rel="stylesheet" />
+
+    <!-- load script -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/jquery-scrollable.js" type="text/javascript"></script>
+    <script src="js/jquery-skinner.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+		$(function(){			
+			var timeStart = (new Date()).getTime(),count = 200;
+			for(var i=0; i<count; i++){
+				$('.test').append('<select class="select" style="'+(0===i%2?'float:none;':'float:right;')+'">\
+					<option>Banana</option>\
+					<option>Cucumber</option>\
+					<option>Strawberry</option>\
+					<option>Hedge apple</option>\
+					<option>Boysenberry</option>\
+					<option>Apple</option>\
+					<option>Pomegranate tree</option>\
+					</select>');
+			}
+			var initDomTime = (new Date()).getTime() - timeStart;
+			$('.select').each(function(){
+				var $this = $(this);
+				$this.skinner({'type':$this.css("float"),'maxitem':'20'
+					,'minWidth':($this.css('min-width')||"40px")
+					,'mode': ($this.hasClass('pureText')?'pureText':'select')
+					,'valueNullable': ($this.hasClass('valueNullable')?true:false)
+					,'placeHolder':'請選擇' // please select
+				});
+			});
+			var renderSkinnerTime = (new Date()).getTime() - timeStart - initDomTime;
+			$('.result').append('<div class="cl">InitDomUseTime:'+initDomTime+';<br/>Rendering Skinner Time:'+renderSkinnerTime+'<br/>It is : '+renderSkinnerTime/count+' per one.</div>');
+		});
+	</script>
+</head>
+	<body>
+			<h1><a href="http://plugins.jquery.com/project/skinner" title="jQuery Skinner 1.1">Skinner</a></h1>
+			<h2>A Plugin for jQuery to customize your combo box. (&lt;select&gt;)</h2>
+			<h3>jquery-skinner.js</h3>
+			<p>If you find any bug, report it by direct message on twitter. <a href="http://twitter.com/#!/anbi">@anbi</a></p>
+			<br />
+			<div style="max-height:180px;overflow:auto;">
+			<div class="test" style="max-height:200px;overflow:auto;">
+			</div>
+			</div>
+			<div class="result" style="max-height:200px">
+			</div>
+	</body>
+</html>

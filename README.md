@@ -50,6 +50,14 @@ $(function(){
 <h3>Changelog</h3>
 <ul>
 
+<li>v 1.3.5 improve the drop down container's drop behaviour logical; 
+		added disabled option;
+		added events:beforeClickItem/whenClickItem/afterClickItem</li>
+<li>v 1.3.1 speed up the rendering process. 
+		update the perfermance and the logic about the dropdown direction.
+		change only trigger when value changed. 
+		support select's unchange event.
+		</li>
 <li>v 1.3.0 added placeHolder; added valueNullable; Fixed Variable Scope Bug;
 				Improved the function usage (_li_click,_apply_max_item is added
 					, checkSelect has been changed to _init_li);
